@@ -1,0 +1,30 @@
+.dropdown {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+}
+
+.dropdown label {
+  font-weight: bold;
+}
+
+.dropdown input[type="range"] {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.dropdown button {
+  background-color: #e9aa95;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}

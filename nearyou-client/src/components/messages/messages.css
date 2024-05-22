@@ -1,0 +1,121 @@
+messages-body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 110vh;
+  background: linear-gradient(
+    180deg,
+    rgb(252, 226, 218) 0%,
+    rgb(204, 252, 247) 100%
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.messages-container {
+  width: 100%;
+  display: flex;
+}
+
+.messages-header-text h1,
+.messages-header-text h2,
+.messages-header-text h3 {
+  color: #696d6c;
+  margin: 0;
+}
+
+.messages-header-text h3 {
+  font-size: 14px;
+}
+
+.messages-header-text p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.messages-styled-button,
+.messages-nav-buttons a {
+  display: block;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.messages-styled-button,
+.messages-nav-buttons a {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.messages-styled-button,
+.messages-nav-buttons a {
+  max-width: 250px;
+  border-radius: 50px; /* Apply border-radius to buttons */
+}
+
+.messages-left-column {
+  width: 25%;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 100px;
+}
+
+.messages-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.messages-header-text {
+  text-align: left;
+}
+
+.messages-header-text h3:first-of-type {
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  margin-bottom: 5px; /* Reduce margin */
+}
+
+.messages-header-text h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  margin-bottom: 5px; /* Reduce margin */
+}
+
+.messages-header-text h3:last-of-type {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin-bottom: 5px; /* Reduce margin */
+}
+
+.messages-logo {
+  width: 160px;
+  height: auto;
+}
+
+.messages-flavor-text {
+  margin: 20px 0;
+  color: #696d6c;
+}
+
+.messages-nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.messages-styled-button {
+  padding: 10px 20px;
+  background-color: #e9aa95;
+  color: white;
+  border: none;
+  border-radius: 50px; /* Apply border-radius to buttons */
+  cursor: pointer;
+  text-align: center;
+  width: 200px; /* Fixed width for all buttons */
+  margin-left: 0;
+}

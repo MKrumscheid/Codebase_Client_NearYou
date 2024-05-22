@@ -1,0 +1,364 @@
+/* Global styles */
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 110vh;
+  background: linear-gradient(
+    180deg,
+    rgb(252, 226, 218) 0%,
+    rgb(204, 252, 247) 100%
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.App {
+  width: 100%;
+  display: flex;
+}
+
+h1,
+h2,
+h3 {
+  color: #696d6c;
+  margin: 0;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+button,
+a {
+  display: block;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+button,
+.styled-link {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+button.filter-button,
+.styled-link {
+  max-width: 250px;
+  border-radius: 50px; /* Apply border-radius to filter buttons in all views */
+}
+
+button.filter-button,
+.styled-link,
+.coupon {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for Discoveries component */
+.discover-container {
+  display: flex;
+}
+
+.left-column {
+  width: 25%;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 100px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-text {
+  text-align: left;
+}
+
+.header-text h3:first-of-type {
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  margin-bottom: 5px; /* Reduce margin */
+}
+
+.header-text h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  margin-bottom: 5px; /* Reduce margin */
+}
+
+.header-text h3:last-of-type {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin-bottom: 5px; /* Reduce margin */
+}
+
+.logo {
+  width: 160px;
+  height: auto;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.filter-button {
+  flex: 1;
+  padding: 10px 20px;
+  background-color: #e9aa95;
+  color: white;
+  border: none;
+  border-radius: 50px; /* Apply border-radius to filter buttons in all views */
+  cursor: pointer;
+  width: 100%; /* Ensure all buttons are same width */
+}
+
+.flavor-text {
+  margin: 20px 0;
+  color: #696d6c;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.styled-button,
+.styled-link {
+  padding: 10px 20px;
+  background-color: #e9aa95;
+  color: white;
+  border: none;
+  border-radius: 50px; /* Apply border-radius to all buttons */
+  cursor: pointer;
+  text-align: center;
+  width: 200px; /* Fixed width for all buttons */
+  margin-left: 0;
+}
+
+.nav-buttons .styled-button,
+.nav-buttons .styled-link {
+  width: 200px; /* Ensure Create and Chat buttons have fixed width */
+}
+
+.content-wrapper {
+  width: 75%;
+  padding: 20px;
+  margin-left: 25%;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  padding-left: 120px; /* Add padding between left column and grid */
+  padding-right: 20px; /* Add right padding for consistency */
+}
+
+.coupons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.coupon {
+  width: 100%;
+}
+
+/* Tablet and Mobile view adjustments */
+@media (max-width: 1220px) {
+  .discover-container {
+    flex-direction: column;
+  }
+
+  .left-column {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    padding-top: 45px;
+    height: auto;
+    background-color: rgb(252, 226, 218); /* Solid color for sticky part */
+    z-index: 10;
+  }
+
+  .content-wrapper {
+    margin-left: 0;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 20px; /* Add right padding for consistency */
+    justify-content: center;
+    background: linear-gradient(
+      180deg,
+      rgb(252, 226, 218) 0%,
+      rgb(204, 252, 247) 100%
+    ); /* Gradient for coupon part */
+  }
+
+  .header {
+    grid-template-columns: auto 50px;
+    justify-content: left;
+  }
+
+  .header-text {
+    text-align: left;
+  }
+
+  .logo {
+    margin: 0 0 10px 0;
+    width: 140px;
+    height: auto;
+    padding-top: 20px;
+  }
+
+  .filters {
+    flex-direction: row;
+    justify-content: flex-start; /* Align filters to the left */
+    gap: 10px;
+    width: calc(100% - 20px); /* Ensure filters take full width */
+  }
+
+  .filter-button {
+    max-width: 100%; /* Ensure consistent button width */
+    margin-right: 0; /* Remove margin between buttons */
+  }
+
+  .nav-buttons {
+    flex-direction: row;
+    justify-content: flex-start; /* Align navigation buttons to the left */
+    gap: 10px;
+    width: calc(100% - 20px); /* Ensure navigation buttons take full width */
+  }
+
+  .styled-button,
+  .styled-link {
+    max-width: 100%; /* Ensure consistent button width */
+    margin-right: 0; /* Remove margin between buttons */
+    width: 200px; /* Fixed width for Create and Chat buttons */
+  }
+
+  .flavor-text {
+    display: block;
+    text-align: left; /* Align text to the left */
+    margin-left: 10px; /* Add margin to place text to the right of buttons */
+  }
+
+  .coupons {
+    grid-template-columns: repeat(2, 1fr); /* Keep two columns in tablet view */
+    margin-top: 5px;
+    padding-right: 20px; /* Add right padding for consistency */
+  }
+
+  button,
+  .styled-link {
+    width: 200px; /* Ensure all buttons are the same width */
+    padding: 10px 20px;
+    margin: 5px 0; /* Remove horizontal margin */
+  }
+}
+
+/* Mobile view adjustments */
+@media (max-width: 870px) {
+  .discover-container {
+    flex-direction: column;
+  }
+
+  .left-column {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 15px;
+    padding-top: 45px;
+    height: auto;
+    background-color: rgb(252, 226, 218); /* Solid color for sticky part */
+    z-index: 10;
+  }
+
+  .content-wrapper {
+    margin-left: 0;
+    margin-right: 20px;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px; /* Add right padding for consistency */
+    justify-content: center;
+    background: linear-gradient(
+      180deg,
+      rgb(252, 226, 218) 0%,
+      rgb(204, 252, 247) 100%
+    ); /* Gradient for coupon part */
+  }
+
+  .header {
+    grid-template-columns: auto 50px;
+    justify-content: left;
+  }
+
+  .header-text {
+    text-align: left;
+  }
+
+  .logo {
+    margin: 0 0 10px 0;
+    width: 120px;
+    height: auto;
+    padding-top: 20px;
+  }
+
+  .filters {
+    flex-direction: row;
+    justify-content: flex-start; /* Align filters to the left */
+    gap: 10px;
+    width: calc(100% - 50px); /* Ensure filters take full width */
+  }
+
+  .filter-button {
+    width: calc(100% - 40px);
+    margin-right: 0; /* Remove margin between buttons */
+  }
+
+  .nav-buttons {
+    flex-direction: row;
+    justify-content: flex-start; /* Align navigation buttons to the left */
+    gap: 10px;
+    width: calc(100% - 20px); /* Ensure navigation buttons take full width */
+  }
+
+  .styled-button,
+  .styled-link {
+    max-width: 100%; /* Ensure consistent button width */
+    margin-right: 0; /* Remove margin between buttons */
+    width: 200px; /* Fixed width for Create and Chat buttons */
+  }
+
+  .flavor-text {
+    display: none;
+  }
+
+  .coupons {
+    margin-right: 15px;
+    grid-template-columns: 1fr; /* Switch to one column in mobile view */
+    margin-top: 5px;
+    padding-right: 30px; /* Add right padding for consistency */
+  }
+
+  button,
+  .styled-link {
+    width: 200px; /* Ensure all buttons are the same width */
+    padding: 10px 20px;
+    margin: 5px 0; /* Remove horizontal margin */
+  }
+}

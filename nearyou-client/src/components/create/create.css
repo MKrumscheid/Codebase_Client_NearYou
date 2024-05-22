@@ -1,0 +1,358 @@
+/* Unique styles for Create page */
+.create-body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 110vh;
+  background: linear-gradient(
+    180deg,
+    rgb(252, 226, 218) 0%,
+    rgb(204, 252, 247) 100%
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.create-container {
+  width: 100%;
+  display: flex;
+}
+
+.create-header-text h1,
+.create-header-text h2,
+.create-header-text h3 {
+  color: #696d6c;
+  margin: 0;
+}
+
+.create-header-text h3 {
+  font-size: 14px;
+}
+
+.create-header-text p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.create-styled-button,
+.create-nav-buttons a {
+  display: block;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.create-styled-button,
+.create-nav-buttons a {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.create-styled-button,
+.create-nav-buttons a {
+  max-width: 250px;
+  border-radius: 50px; /* Apply border-radius to buttons */
+}
+
+.create-left-column {
+  width: 25%;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 100px;
+}
+
+.create-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.create-header-text {
+  text-align: left;
+}
+
+.create-header-text h3:first-of-type {
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  margin-bottom: 5px; /* Reduce margin */
+}
+
+.create-header-text h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  margin-bottom: 5px; /* Reduce margin */
+}
+
+.create-header-text h3:last-of-type {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin-bottom: 5px; /* Reduce margin */
+}
+
+.create-logo {
+  width: 160px;
+  height: auto;
+}
+
+.create-flavor-text {
+  margin: 20px 0;
+  color: #696d6c;
+}
+
+.create-nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.create-styled-button {
+  padding: 10px 20px;
+  background-color: #e9aa95;
+  color: white;
+  border: none;
+  border-radius: 50px; /* Apply border-radius to buttons */
+  cursor: pointer;
+  text-align: center;
+  width: 200px; /* Fixed width for all buttons */
+  margin-left: 0;
+}
+
+.create-form-wrapper {
+  width: 75%;
+  padding: 20px;
+  margin-left: 25%;
+  margin-top: 80px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  padding-left: 120px; /* Add padding between left column and grid */
+  padding-right: 20px; /* Add right padding for consistency */
+}
+
+/* Form styles */
+.create-form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-right: 45px;
+}
+
+.create-location {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+
+.create-location-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-location-input label {
+  font-size: 12px;
+  color: #696d6c;
+  margin-bottom: 5px;
+}
+
+.create-location-input input {
+  padding: 10px;
+  border: 1px solid #e9aa95;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent input field */
+}
+
+.create-current-position-button {
+  padding: 10px 20px;
+  margin: 15px;
+  margin-right: 0;
+  margin-left: 20px;
+  margin-top: 35px;
+  background-color: #e9aa95;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.create-upload-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.create-upload {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px dashed #e9aa95;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.create-upload input {
+  display: none;
+}
+
+.create-upload label {
+  color: #696d6c;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.create-preview-image {
+  margin-top: 10px;
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.create-form input[type="text"],
+.create-form select,
+.create-form input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e9aa95;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent input field */
+}
+
+.create-distance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.create-distance label {
+  flex: 1;
+  font-size: 14px;
+  color: #696d6c;
+}
+
+.create-distance input[type="range"] {
+  flex: 2;
+}
+
+.create-distance span {
+  flex: 1;
+  text-align: right;
+  font-size: 14px;
+  color: #696d6c;
+}
+
+.create-quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.create-quantity label {
+  flex: 1;
+  font-size: 14px;
+  color: #696d6c;
+}
+
+.create-quantity input[type="number"] {
+  flex: 2;
+}
+
+.create-submit-button {
+  padding: 10px 20px;
+  background-color: #40b8ab;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-align: center;
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1220px) {
+  .create-container {
+    flex-direction: column;
+  }
+
+  .create-left-column {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    height: auto;
+    background-color: rgb(252, 226, 218); /* Solid color for sticky part */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .create-header {
+    grid-template-columns: auto auto;
+    justify-content: center;
+  }
+
+  .create-header-text {
+    text-align: center;
+  }
+
+  .create-logo {
+    margin: 0 0 10px 0;
+    width: 140px;
+    height: auto;
+    padding-top: 20px;
+  }
+
+  .create-flavor-text {
+    display: block;
+    text-align: center; /* Center text */
+    margin: 10px 0; /* Adjust margin */
+    margin-right: 50px;
+  }
+
+  .create-nav-buttons {
+    flex-direction: row;
+    justify-content: center; /* Center navigation buttons */
+    gap: 10px;
+    width: calc(100% - 20px); /* Ensure navigation buttons take full width */
+    margin: 10px 0; /* Adjust margin */
+  }
+
+  .create-styled-button,
+  .create-nav-buttons a {
+    max-width: 100%; /* Ensure consistent button width */
+    margin-right: 25px; /* Remove margin between buttons */
+    width: 200px; /* Fixed width for all buttons */
+  }
+
+  .create-form-wrapper {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 0px;
+    padding-left: 10px;
+    padding-right: 20px; /* Add right padding for consistency */
+    justify-content: center;
+    background: linear-gradient(
+      180deg,
+      rgb(252, 226, 218) 0%,
+      rgb(204, 252, 247) 100%
+    ); /* Gradient for form part */
+  }
+
+  .create-form input[type="text"],
+  .create-form select,
+  .create-form input[type="number"] {
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent input field */
+  }
+}
