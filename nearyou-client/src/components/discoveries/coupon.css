@@ -8,6 +8,7 @@
   flex-direction: column;
   aspect-ratio: 35 / 32;
   margin: 10px;
+  padding: 10px;
 }
 
 .coupon-image-container {
@@ -70,6 +71,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
+  gap: 10px;
   aspect-ratio: 35 / 8;
 }
 
@@ -139,18 +141,18 @@
 
   .coupon-info p,
   .coupon-info .product-name {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .coupon-info p,
   .coupon-info .product-info {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 870px) {
   .coupon-labels .label {
-    font-size: 12px;
+    font-size: 14px;
     padding: 3px 6px;
   }
 
@@ -161,7 +163,7 @@
 
   .coupon-info p,
   .coupon-info .product-info {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .price-container .old-price,
@@ -172,7 +174,7 @@
 
 @media (max-width: 550px) {
   .coupon-labels .label {
-    font-size: 8px;
+    font-size: 10px;
     padding: 3px 6px;
   }
 
@@ -183,7 +185,7 @@
 
   .coupon-info p,
   .coupon-info .product-info {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .price-container .old-price,

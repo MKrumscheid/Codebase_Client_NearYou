@@ -73,9 +73,7 @@ const Coupons = ({ coupons, onClaim, fetchCoupons }) => {
               <div className="label validity">
                 {coupon.claimed
                   ? formatTime(timers[coupon.id] || coupon.remainingValidity)
-                  : `${Math.floor(coupon.validity / 60)}:${(
-                      coupon.validity % 60
-                    )
+                  : `${Math.floor(coupon.validity)}:${(coupon.validity % 60)
                       .toString()
                       .padStart(2, "0")}`}
               </div>
