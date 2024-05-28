@@ -172,7 +172,7 @@ button.filter-button,
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   margin-top: 20px;
-  margin-right: 20px;
+  margin-right: 30px; /*adjust margin between the right edge and coupons */
 }
 
 .coupon {
@@ -261,6 +261,7 @@ button.filter-button,
     grid-template-columns: repeat(2, 1fr); /* Keep two columns in tablet view */
     margin-top: 5px;
     padding-right: 20px; /* Add right padding for consistency */
+    margin-right: 40px;
   }
 
   button,
@@ -352,7 +353,7 @@ button.filter-button,
     margin-right: 15px;
     grid-template-columns: 1fr; /* Switch to one column in mobile view */
     margin-top: 5px;
-    padding-right: 30px; /* Add right padding for consistency */
+    padding-right: 45px; /* Add right padding for consistency */
   }
 
   button,

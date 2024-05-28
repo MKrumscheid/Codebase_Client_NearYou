@@ -3,16 +3,19 @@ import PropTypes from "prop-types";
 import "./coupon.css";
 
 const Coupons = ({ coupons, onClaim, fetchCoupons }) => {
+  // State to store the remaining validity of each coupon using a timer
   const [timers, setTimers] = useState({});
 
+  // Update the timers when the coupons change
   useEffect(() => {
     const intervalIds = {};
-
+    // Clear all intervals when the component unmounts
     coupons.forEach((coupon) => {
       if (coupon.claimed && coupon.remainingValidity > 0) {
         const endTime = new Date(
           new Date().getTime() + coupon.remainingValidity
         );
+        // Update the timer every second based on the remaining validity
         intervalIds[coupon.id] = setInterval(() => {
           const now = new Date();
           const timeLeft = Math.max(0, endTime - now);
@@ -29,10 +32,11 @@ const Coupons = ({ coupons, onClaim, fetchCoupons }) => {
     });
 
     return () => {
-      Object.values(intervalIds).forEach(clearInterval);
+      Object.values(intervalIds).forEach(clearInterval); // Clear all intervals when the component unmounts to prevent memory leaks
     };
   }, [coupons, fetchCoupons]);
 
+  // Format the time in milliseconds to HH:MM:SS
   const formatTime = (milliseconds) => {
     const totalSeconds = Math.floor(milliseconds / 1000);
     const hours = Math.floor(totalSeconds / 3600);
@@ -43,21 +47,25 @@ const Coupons = ({ coupons, onClaim, fetchCoupons }) => {
       .padStart(2, "0")}`;
   };
 
+  // Handle the click event on a coupon by calling the onClaim function in the discovery component
   const handleCouponClick = (id) => {
     onClaim(id);
   };
 
+  // Update the local storage when the remaining validity of a coupon changes
   const updateLocalStorage = (id, timeLeft) => {
     const storedCoupons = JSON.parse(localStorage.getItem("coupons")) || [];
+    // Update the remaining validity of the coupon in the local storage
     const updatedCoupons = storedCoupons
       .map((coupon) =>
         coupon.id === id ? { ...coupon, remainingValidity: timeLeft } : coupon
       )
-      .filter((coupon) => coupon.remainingValidity > 0);
+      .filter((coupon) => coupon.remainingValidity > 0); // Remove the coupon from the local storage if the remaining validity is 0
 
     localStorage.setItem("coupons", JSON.stringify(updatedCoupons));
   };
 
+  // Render the list of coupons
   return (
     <div className="coupons">
       {coupons.map((coupon) => (
@@ -99,6 +107,7 @@ const Coupons = ({ coupons, onClaim, fetchCoupons }) => {
   );
 };
 
+// Define the prop types for the component for type checking
 Coupons.propTypes = {
   coupons: PropTypes.arrayOf(
     PropTypes.shape({

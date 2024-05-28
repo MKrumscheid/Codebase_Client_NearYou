@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./CategoryDropdown.css";
 
+// Defining the available categories
 const categories = [
   { value: "tech", label: "Technik" },
   { value: "food", label: "Essen und Trinken" },
@@ -9,17 +10,21 @@ const categories = [
   { value: "beauty", label: "Beauty & Wellness" },
 ];
 
+// Dropdown component for selecting categories
 const CategoryDropdown = ({ selectedCategories, onApply }) => {
+  // State to store the selected categories
   const [selected, setSelected] = useState(selectedCategories);
 
+  // Function to handle the checkbox change event
   const handleCheckboxChange = (category) => {
-    setSelected((prevSelected) =>
-      prevSelected.includes(category)
-        ? prevSelected.filter((c) => c !== category)
-        : [...prevSelected, category]
+    setSelected(
+      (prevSelected) =>
+        prevSelected.includes(category)
+          ? prevSelected.filter((c) => c !== category) // Remove the category if it is already selected
+          : [...prevSelected, category] // Add the category if it is not selected
     );
   };
-
+  // Return the dropdown component with checkboxes for each category
   return (
     <div className="dropdown">
       <label>Produktkategorie:</label>
