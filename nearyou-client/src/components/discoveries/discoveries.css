@@ -265,7 +265,7 @@ button.filter-button,
     grid-template-columns: repeat(2, 1fr); /* Keep two columns in tablet view */
     margin-top: 5px;
     padding-right: 20px; /* Add right padding for consistency */
-    margin-right: 40px;
+    margin-right: 0px;
   }
 
   button,
