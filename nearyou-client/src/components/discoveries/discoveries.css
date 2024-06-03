@@ -1,9 +1,13 @@
 /* Global styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
-  min-height: 110vh;
+  min-height: 100vh;
   background: linear-gradient(
     180deg,
     rgb(252, 226, 218) 0%,
@@ -300,7 +304,7 @@ button.filter-button,
       180deg,
       rgb(252, 226, 218) 0%,
       rgb(204, 252, 247) 100%
-    ); /* Gradient for coupon part */
+    );
   }
 
   .header {
@@ -350,10 +354,10 @@ button.filter-button,
   }
 
   .coupons {
-    margin-right: 15px;
+    margin-right: 5px;
     grid-template-columns: 1fr; /* Switch to one column in mobile view */
     margin-top: 5px;
-    padding-right: 45px; /* Add right padding for consistency */
+    padding-right: 15px; /* Add right padding for consistency */
   }
 
   button,

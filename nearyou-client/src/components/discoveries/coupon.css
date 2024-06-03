@@ -8,14 +8,9 @@
   flex-direction: column;
   aspect-ratio: 35 / 32;
   margin: 10px;
-  margin-right: 20px;
+  margin-right: 280px;
   padding: 10px;
-}
-
-.coupon-image-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 35 / 24;
+  position: relative; /* Stellen Sie sicher, dass das Hauptelement relativ positioniert ist */
 }
 
 .coupon.claimed {
@@ -23,19 +18,29 @@
   pointer-events: none; /* Disable interaction */
 }
 
+.coupon-image-container {
+  position: relative; /* Wichtig für die korrekte Positionierung der Labels */
+  width: 100%;
+  height: 100%; /* Höhe entsprechend der Breite anpassen, um das Seitenverhältnis beizubehalten */
+  overflow: hidden; /* Abschneiden von außerhalb des Containers */
+}
+
 .coupon-image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  aspect-ratio: 35 / 24; /* Bild-Seitenverhältnis, um sicherzustellen, dass es den Container füllt */
 }
 
 .coupon-labels {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 10px;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  z-index: 2; /* Stellen Sie sicher, dass die Labels über den Bildern liegen */
+  margin-top: 10px;
 }
 
 .coupon-labels .label {
@@ -50,23 +55,19 @@
   font-weight: bold;
 }
 
+.coupon-labels .label.validity,
 .coupon-labels .label.discount {
   background: #e9aa95;
-  margin-top: 20px;
-}
-
-.coupon-labels .label.validity {
-  background: #e9aa95;
+  margin-top: 3px;
 }
 
 .coupon-labels .label.quantity {
   background: #40b8ab;
-  margin-top: auto; /* Push to the bottom */
-  margin-bottom: 20px; /* 20px from the bottom */
+  margin-top: 3px;
 }
 
 .coupon-details {
-  padding: 0px;
+  padding: 0;
   margin: 15px;
   margin-top: 5px;
   display: grid;
@@ -89,7 +90,7 @@
 }
 
 .coupon-info p {
-  margin: 0px 0;
+  margin: 0;
   font-size: 12px;
 }
 
@@ -106,7 +107,7 @@
 
 .price-container .old-price {
   margin-right: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   position: relative;
   color: #747474;
   font-weight: bold;
@@ -127,7 +128,7 @@
 
 .price-container .new-price {
   margin-right: 10px;
-  margin-top: -5px; /* Reduce spacing between old and new price */
+  margin-top: -5px;
   color: #40b8ab;
   font-size: 18px;
   font-weight: bold;
