@@ -1,4 +1,4 @@
-messages-body {
+.messages-body {
   font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
@@ -15,22 +15,6 @@ messages-body {
 .messages-container {
   width: 100%;
   display: flex;
-}
-
-.messages-header-text h1,
-.messages-header-text h2,
-.messages-header-text h3 {
-  color: #696d6c;
-  margin: 0;
-}
-
-.messages-header-text h3 {
-  font-size: 14px;
-}
-
-.messages-header-text p {
-  font-size: 14px;
-  line-height: 1.5;
 }
 
 .messages-styled-button,
@@ -118,4 +102,316 @@ messages-body {
   text-align: center;
   width: 200px; /* Fixed width for all buttons */
   margin-left: 0;
+}
+
+.messages-content-wrapper {
+  width: 75%;
+  padding: 20px;
+  margin-left: 25%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 20px; /* Add padding between left column and grid */
+  padding-right: 20px; /* Add right padding for consistency */
+  position: relative; /* For positioning the form */
+}
+
+.chat-wrapper {
+  width: 100%;
+  padding-bottom: 60px; /* Space for the fixed form */
+}
+
+.chat-container {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  margin-top: 80px;
+  padding-left: 100px;
+  align-items: center;
+  padding-right: 40px; /* Ensure space between messages and right edge */
+  overflow: hidden; /* Hide messages behind the form */
+}
+
+.messages-form {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 40px); /* Adjust width to match content wrapper padding */
+  padding: 10px;
+  padding-left: 30%;
+  border: none;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-top: 20px;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+}
+
+.messages-form input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px; /* Rounder corners */
+  background-color: rgb(255, 255, 255); /* Transparent input field */
+}
+
+.messages-submit-button {
+  padding: 10px 20px;
+  background-color: #40b8ac;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.message {
+  position: relative;
+  padding: 10px 20px;
+  margin: 10px 0;
+  color: white;
+  max-width: 80%;
+  min-width: 150px;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.content {
+  font-size: 16px;
+}
+
+/* received messages */
+.recieved {
+  border-radius: 20px 20px 20px 20px;
+  background-color: #eba995;
+  margin-right: auto;
+  margin-left: 0; /* Align to the left */
+}
+
+/* Triangle of speech bubble from received messages */
+.recieved::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: -20px; /* Position of the peak */
+  transform: rotate(90deg);
+  border-width: 15px 15px 15px 0;
+  border-style: solid;
+  border-color: #eba995 transparent transparent transparent;
+}
+
+/* sent messages */
+.sent {
+  background-color: #40b8ab;
+  border-radius: 20px 20px 20px 20px;
+  margin-left: auto;
+  margin-right: 0; /* Align to the right */
+}
+
+/* Triangle of speech bubble from sent messages */
+.sent::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  right: -15px; /* Position of the peak */
+  border-width: 15px 15px 15px 0;
+  border-style: solid;
+  border-color: #40b8ab transparent transparent transparent;
+}
+
+/* Distance styling */
+.distance {
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+  font-size: 8px; /* Adjusted font size for distance */
+  color: rgba(230, 230, 230, 0.873); /* Grey color for distance text */
+}
+
+/* Tablet and Mobile view adjustments */
+@media (max-width: 1220px) {
+  .messages-container {
+    flex-direction: column;
+  }
+
+  .messages-form {
+    display: flex;
+    align-items: center;
+    width: calc(
+      100% - 40px
+    ); /* Adjust width to match content wrapper padding */
+    padding: 10px;
+    padding-left: 0.8%;
+    border: none;
+    border-radius: 20px;
+    margin-top: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .chat-container {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 40px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .messages-left-column {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 30px;
+
+    padding-top: 45px;
+    height: auto;
+    background-color: rgb(252, 226, 218); /* Solid color for sticky part */
+    z-index: 10;
+  }
+
+  .messages-content-wrapper {
+    margin-left: 0;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px; /* Add right padding for consistency */
+    justify-content: left;
+    background: linear-gradient(
+      180deg,
+      rgb(252, 226, 218) 0%,
+      rgb(204, 252, 247) 100%
+    ); /* Gradient for form part */
+  }
+
+  .messages-header {
+    grid-template-columns: auto 1fr;
+    justify-content: left; /* Center align header in smaller viewports */
+  }
+
+  .messages-header-text {
+    text-align: left; /* Center text in header */
+  }
+
+  .messages-logo {
+    margin: 0 0 10px 0;
+    width: 140px;
+    height: auto;
+    padding-top: 20px;
+  }
+
+  .messages-nav-buttons {
+    flex-direction: row;
+    justify-content: left; /* Align navigation buttons to the center */
+    gap: 10px;
+    width: calc(100% - 20px); /* Ensure navigation buttons take full width */
+  }
+
+  .messages-styled-button,
+  .messages-styled-link {
+    max-width: 100%; /* Ensure consistent button width */
+    margin-right: 0; /* Remove margin between buttons */
+    width: 200px; /* Fixed width for Create and Chat buttons */
+  }
+
+  .messages-flavor-text {
+    display: block;
+    text-align: left; /* Center text */
+    margin-left: 0; /* No margin needed in centered text */
+  }
+}
+
+/* Mobile view adjustments */
+@media (max-width: 870px) {
+  .messages-container {
+    flex-direction: column;
+  }
+
+  .chat-container {
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .messages-form {
+    display: flex;
+    align-items: center;
+    width: calc(
+      100% - 40px
+    ); /* Adjust width to match content wrapper padding */
+    padding: 10px;
+    padding-left: 0.8%;
+    border: none;
+    border-radius: 20px;
+    margin-top: 10px;
+    position: fixed;
+    bottom: 10px;
+    left: 20px;
+    right: 20px;
+  }
+
+  .messages-left-column {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 15px;
+    padding-top: 45px;
+    height: auto;
+    background-color: rgb(252, 226, 218); /* Solid color for sticky part */
+    z-index: 10;
+  }
+
+  .messages-content-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px; /* Add right padding for consistency */
+    justify-content: center;
+    background: linear-gradient(
+      180deg,
+      rgb(252, 226, 218) 0%,
+      rgb(204, 252, 247) 100%
+    );
+  }
+
+  .messages-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center align header text and logo */
+    justify-content: center; /* Center the header */
+  }
+
+  .messages-header-text {
+    text-align: center; /* Center text */
+    margin-left: 10px; /* Space between logo and text */
+  }
+
+  .messages-logo {
+    margin: 0 10px 0 0;
+    width: 120px;
+    height: auto;
+  }
+
+  .messages-nav-buttons {
+    flex-direction: row;
+    justify-content: center; /* Align navigation buttons to the center */
+    gap: 10px;
+    width: calc(100% - 20px); /* Ensure navigation buttons take full width */
+  }
+
+  .messages-styled-button,
+  .messages-styled-link {
+    max-width: 100%; /* Ensure consistent button width */
+    margin-right: 0; /* Remove margin between buttons */
+    width: 200px; /* Fixed width for Create and Chat buttons */
+  }
+
+  .messages-flavor-text {
+    display: none;
+  }
 }

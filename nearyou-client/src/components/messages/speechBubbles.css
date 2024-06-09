@@ -1,0 +1,64 @@
+.message {
+  position: relative;
+  padding: 10px 20px;
+  margin: 10px 0;
+  color: white;
+  max-width: 80%;
+  min-width: 150px;
+  display: inline-block;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.content {
+  font-size: 16px;
+  margin-top: 0px;
+}
+
+/* received messages */
+.recieved {
+  border-radius: 20px 20px 20px 20px;
+  background-color: #eba995;
+  margin-right: auto;
+  margin-left: 0; /* Align to the left */
+}
+
+/* Triangle of speech bubble from received messages */
+.recieved::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: -20px; /* Position of the peak */
+  transform: rotate(90deg);
+  border-width: 15px 15px 15px 0;
+  border-style: solid;
+  border-color: #eba995 transparent transparent transparent;
+}
+
+/* sent messages */
+.sent {
+  background-color: #40b8ab;
+  border-radius: 20px 20px 20px 20px;
+  margin-left: auto;
+  margin-right: 0; /* Align to the right */
+}
+
+/* Triangle of speech bubble from sent messages */
+.sent::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  right: -15px; /* Position of the peak */
+  border-width: 15px 15px 15px 0;
+  border-style: solid;
+  border-color: #40b8ab transparent transparent transparent;
+}
+
+/* Distance styling */
+.distance {
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+  font-size: 8px;
+  color: rgba(230, 230, 230, 0.873);
+}
