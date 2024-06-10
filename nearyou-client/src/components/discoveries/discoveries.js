@@ -188,6 +188,18 @@ const Discoveries = () => {
           </div>
           <img className="logo" src="/NearYouLogo.png" alt="Logo" />
         </div>
+        <div className="flavor-text">
+          <p>
+            Egal ob neu in der Stadt oder alter Hase. Mit NearYou findest du
+            garantiert neue Aktivitäten, exklusive Deals und kulinarische
+            Höhepunkte. Immer in deiner Nähe!
+          </p>
+          <p>
+            Entdecke Restaurants, Events und Sonderaktionen, die deine Stadt zu
+            bieten hat - Was gefunden? Mit der Chat-Funktion kannst du es gleich
+            weiter erzählen!
+          </p>
+        </div>
         <div className="filters">
           <button className="filter-button" onClick={toggleDistanceDropdown}>
             Umkreis
@@ -205,18 +217,6 @@ const Discoveries = () => {
             onApply={applyCategoryFilter}
           />
         )}
-        <div className="flavor-text">
-          <p>
-            Egal ob neu in der Stadt oder alter Hase. Mit NearYou findest du
-            garantiert neue Aktivitäten, exklusive Deals und kulinarische
-            Höhepunkte. Immer in deiner Nähe!
-          </p>
-          <p>
-            Entdecke Restaurants, Events und Sonderaktionen, die deine Stadt zu
-            bieten hat - Was gefunden? Mit der Chat-Funktion kannst du es gleich
-            weiter erzählen!
-          </p>
-        </div>
         <div className="nav-buttons">
           <button className="styled-button" onClick={() => navigate("/create")}>
             CREATE

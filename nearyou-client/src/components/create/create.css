@@ -55,7 +55,7 @@
 }
 
 .create-left-column {
-  width: 25%;
+  width: 30%;
   padding: 20px;
   position: fixed;
   height: 100%;
@@ -173,8 +173,8 @@
 .create-current-position-button {
   padding: 10px 20px;
   margin: 15px;
-  margin-right: 0;
-  margin-left: 20px;
+  margin-right: 10;
+  margin-left: 10px;
   margin-top: 35px;
   background-color: #e9aa95;
   color: white;
@@ -320,6 +320,8 @@
     text-align: center; /* Center text */
     margin: 10px 0; /* Adjust margin */
     margin-right: 50px;
+    padding-left: 140px;
+    padding-right: 140px;
   }
 
   .create-nav-buttons {
@@ -357,5 +359,18 @@
   .create-form select,
   .create-form input[type="number"] {
     background-color: rgba(255, 255, 255, 0.8); /* Transparent input field */
+  }
+}
+
+@media (max-width: 870px) {
+  .create-flavor-text {
+    display: none;
+  }
+
+  .create-current-position-button {
+    padding: 10px 20px;
+    margin-top: 33px;
+    margin-right: 5px;
+    margin-left: 5px;
   }
 }

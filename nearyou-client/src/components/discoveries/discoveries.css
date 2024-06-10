@@ -70,8 +70,9 @@ button.filter-button,
 }
 
 .left-column {
-  width: 25%;
+  width: 30%;
   padding: 20px;
+  padding-right: 45px;
   position: fixed;
   height: 100%;
   overflow: hidden;
@@ -161,22 +162,23 @@ button.filter-button,
 }
 
 .content-wrapper {
-  width: 75%;
-  padding: 20px;
-  margin-left: 25%;
+  width: 65%;
+  padding: 0px;
+  margin-left: 30%;
   overflow-y: auto;
   display: flex;
   justify-content: center;
-  padding-left: 120px; /* Add padding between left column and grid */
+  padding-left: 0px; /* Add padding between left column and grid */
   padding-right: 20px; /* Add right padding for consistency */
 }
 
 .coupons {
+  padding-left: 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   margin-top: 20px;
-  margin-right: 30px; /*adjust margin between the right edge and coupons */
+  margin-right: 0px; /*adjust margin between the right edge and coupons */
 }
 
 .coupon {
@@ -194,7 +196,7 @@ button.filter-button,
     top: 0;
     width: 100%;
     padding: 10px;
-    padding-top: 45px;
+    padding-top: 25px;
     height: auto;
     background-color: rgb(252, 226, 218); /* Solid color for sticky part */
     z-index: 10;
@@ -214,6 +216,7 @@ button.filter-button,
   }
 
   .header {
+    padding-left: 10px;
     grid-template-columns: auto 50px;
     justify-content: left;
   }
@@ -259,6 +262,7 @@ button.filter-button,
     display: block;
     text-align: left; /* Align text to the left */
     margin-left: 10px; /* Add margin to place text to the right of buttons */
+    margin-top: 0px;
   }
 
   .coupons {
@@ -354,10 +358,11 @@ button.filter-button,
   }
 
   .coupons {
-    margin-right: 5px;
+    margin-right: 20px;
     grid-template-columns: 1fr; /* Switch to one column in mobile view */
     margin-top: 5px;
-    padding-right: 15px; /* Add right padding for consistency */
+    padding-right: 10px;
+    padding-left: 10px;
   }
 
   button,

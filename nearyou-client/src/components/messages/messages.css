@@ -38,7 +38,7 @@
 }
 
 .messages-left-column {
-  width: 25%;
+  width: 35%;
   padding: 20px;
   position: fixed;
   height: 100%;
@@ -127,9 +127,9 @@
   flex-flow: column nowrap;
   width: 100%;
   margin-top: 80px;
-  padding-left: 100px;
+  padding-left: 200px;
   align-items: center;
-  padding-right: 40px; /* Ensure space between messages and right edge */
+  padding-right: 140px; /* Ensure space between messages and right edge */
   overflow: hidden; /* Hide messages behind the form */
 }
 
@@ -138,7 +138,8 @@
   align-items: center;
   width: calc(100% - 40px); /* Adjust width to match content wrapper padding */
   padding: 10px;
-  padding-left: 30%;
+  padding-left: 40%;
+  padding-right: 10%;
   border: none;
   overflow: hidden;
   border-radius: 20px;
@@ -236,14 +237,19 @@
     flex-direction: column;
   }
 
+  .messages-flavor-text {
+    display: none;
+  }
+
   .messages-form {
     display: flex;
     align-items: center;
     width: calc(
-      100% - 40px
+      100% - 80px
     ); /* Adjust width to match content wrapper padding */
     padding: 10px;
-    padding-left: 0.8%;
+    padding-left: 85px;
+    padding-right: 50px;
     border: none;
     border-radius: 20px;
     margin-top: 20px;
@@ -256,9 +262,9 @@
   .chat-container {
     margin-left: 0px;
     margin-top: 0px;
-    margin-right: 40px;
-    padding-right: 30px;
-    padding-left: 30px;
+    margin-right: 0px;
+    padding-right: 100px;
+    padding-left: 100px;
   }
 
   .messages-left-column {
@@ -314,12 +320,6 @@
     max-width: 100%; /* Ensure consistent button width */
     margin-right: 0; /* Remove margin between buttons */
     width: 200px; /* Fixed width for Create and Chat buttons */
-  }
-
-  .messages-flavor-text {
-    display: block;
-    text-align: left; /* Center text */
-    margin-left: 0; /* No margin needed in centered text */
   }
 }
 
