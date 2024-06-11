@@ -196,6 +196,7 @@ button.filter-button,
     top: 0;
     width: 100%;
     padding: 10px;
+    padding-left: 40px;
     padding-top: 25px;
     height: auto;
     background-color: rgb(252, 226, 218); /* Solid color for sticky part */
