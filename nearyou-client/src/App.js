@@ -7,11 +7,12 @@ import GeolocationProvider from "./components/helper_components/GeolocationProvi
 
 function App() {
   return (
+    //its importan that GeoloactionProvider and Router are parents of the other components
     <GeolocationProvider>
       <Router>
         <div className="App">
           <Routes>
-            <Route path="/discoveries" element={<Discoveries />} />
+            <Route path="/" element={<Discoveries />} />
             <Route path="/create" element={<Create />} />
             <Route path="/messages" element={<Messages />} />
           </Routes>

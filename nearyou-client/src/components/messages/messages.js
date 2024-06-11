@@ -11,12 +11,14 @@ const Messages = () => {
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null); // Reference to the end of messages
 
+  //a message is considered a form with content, latitude and longitude
   const [formState, setFormFate] = useState({
     content: "",
     longitude: location.longitude || "",
     latitude: location.latitude || "",
   });
 
+  //update the form state with the input values
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormFate((prev) => ({
@@ -24,7 +26,7 @@ const Messages = () => {
       [name]: value,
     }));
   };
-
+  //adds a message that was send by the user to the local storage
   const addMessageToLocalStorage = (message) => {
     const messages = JSON.parse(localStorage.getItem("myMessages")) || [];
     const updatedMessages = [
@@ -34,14 +36,15 @@ const Messages = () => {
     localStorage.setItem("myMessages", JSON.stringify(updatedMessages));
   };
 
+  //what to do when the send button is clicked
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the default form submission
     const bodyContent = JSON.stringify({
       content: formState.content,
       latitude: location.latitude,
       longitude: location.longitude,
     });
-
+    //POST the message to the server
     try {
       const response = await fetch("http://localhost:3000/api/messages", {
         method: "POST",
@@ -53,14 +56,18 @@ const Messages = () => {
 
       if (response.ok) {
         const createdMessage = await response.json();
+        // Add the message to the local storage
         addMessageToLocalStorage({ ...createdMessage, isMyMessage: true });
-        fetchMessages(); // Nach dem Senden erneut Nachrichten abrufen
+        // Fetch the messages again to update the list
+        fetchMessages();
+        // Reset the form state
         setFormFate({
           content: "",
           longitude: location.longitude || "",
           latitude: location.latitude || "",
         });
-        scrollToBottom(); // Scroll to the bottom after sending a message
+        // // Scroll to the bottom after sending a message and everytime new messages are fetched
+        scrollToBottom();
       } else {
         alert("Failed to send message.");
       }
@@ -69,7 +76,7 @@ const Messages = () => {
       alert("Error submitting form.");
     }
   };
-
+  //fetches the messages from the server and updates the local storage
   const fetchMessages = useCallback(async () => {
     const localMessages = JSON.parse(localStorage.getItem("myMessages")) || [];
     try {
@@ -85,6 +92,7 @@ const Messages = () => {
       const data = await response.json();
 
       const allMessages = [...localMessages, ...data];
+      // Remove duplicate messages, since the server might return messages that are already in the local storage
       const uniqueMessages = allMessages.reduce((acc, current) => {
         const x = acc.find((item) => item.id === current.id);
         if (!x) {
@@ -93,7 +101,7 @@ const Messages = () => {
           return acc;
         }
       }, []);
-
+      // Calculate the distance of each message from the user's location
       uniqueMessages.forEach((msg) => {
         msg.distance = calculateDistance(
           location.latitude,
@@ -102,10 +110,11 @@ const Messages = () => {
           msg.location.coordinates[0] // Longitude
         );
       });
-
+      // Sort the messages by creation date to show them in the correct order
       uniqueMessages.sort(
         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
       );
+      // Update the local storage and state with the unique messages
       localStorage.setItem("myMessages", JSON.stringify(uniqueMessages));
       setMessages(uniqueMessages);
       scrollToBottom(); // Scroll to the bottom after fetching messages
@@ -117,7 +126,7 @@ const Messages = () => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-
+  //fetch the messages when the component is mounted and every 5 seconds. We have to call this every 5 seconds, otherwise the server would need to calculate to whom it should push the messages every time a new message is sent
   useEffect(() => {
     fetchMessages();
     const intervalId = setInterval(fetchMessages, 5000);
@@ -149,7 +158,7 @@ const Messages = () => {
         <div className="messages-nav-buttons">
           <button
             className="messages-styled-button"
-            onClick={() => navigate("/discoveries")}
+            onClick={() => navigate("/")}
           >
             DISCOVER
           </button>

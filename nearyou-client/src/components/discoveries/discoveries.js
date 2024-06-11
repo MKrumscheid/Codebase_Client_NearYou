@@ -53,9 +53,9 @@ const Discoveries = () => {
       //merging the updated coupons with the stored coupons and the valid claimed coupons
       const mergedCoupons = [
         ...updatedCoupons.map((coupon) => {
-          //mapping over the updated coupons and adding the quantity, claimed, validity, remaining validity and claimed at to them
+          //mapping over the updated coupons and adding the quantity, claimed, validity, remaining validity and claimedAt to them
           const storedCoupon = storedCoupons.find((c) => c.id === coupon.id);
-          //if the stored coupon exists, return the updated coupon with the quantity, claimed, validity, remaining validity and claimed at from the stored coupon
+          //if the stored coupon exists, return the updated coupon with the quantity, claimed, validity, remaining validity and claimedAt from the stored coupon
           if (storedCoupon) {
             return {
               ...coupon,
@@ -87,7 +87,7 @@ const Discoveries = () => {
     } catch (error) {
       console.error("Error fetching coupons:", error);
     }
-  }, [distance, location.latitude, location.longitude]);
+  }, [distance, location.latitude, location.longitude]); //dependencies are distance, location.latitude and location.longitude, this function will only be called when these dependencies change
 
   const claimCoupon = async (id) => {
     try {
@@ -106,7 +106,7 @@ const Discoveries = () => {
         coupon.id === id
           ? {
               ...coupon,
-              quantity: data.quantity,
+              quantity: data.quantity, //updating the quantity of the coupon, the Server decreases the quantity by 1 when the coupon is PATCHED
               claimed: true,
               remainingValidity: coupon.validity * 60000,
               claimedAt: currentTime,

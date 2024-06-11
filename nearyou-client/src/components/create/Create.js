@@ -6,6 +6,7 @@ import { useGeolocation } from "../helper_components/GeolocationProvider";
 const Create = () => {
   const navigate = useNavigate();
   const location = useGeolocation();
+  //formState hold the values of the form inputs, including the file values
   const [formState, setFormState] = useState({
     product: "",
     productInfo: "",
@@ -21,7 +22,7 @@ const Create = () => {
     productPhotoPreview: null,
     companyLogoPreview: null,
   });
-
+  //update the form state with the input values
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormState((prev) => ({
@@ -29,7 +30,7 @@ const Create = () => {
       [name]: value,
     }));
   };
-
+  //update the form state with the file values
   const handleFileChange = (e) => {
     const { name, files } = e.target;
     const file = files[0];
@@ -40,9 +41,10 @@ const Create = () => {
     }));
   };
 
+  //what to do when the create button is clicked
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
+    e.preventDefault(); // Prevent the default form submission
+    // Create a new FormData object, since we need to store files as well (not just JSON data)
     const formData = new FormData();
     for (const key in formState) {
       formData.append(key, formState[key]);
@@ -56,6 +58,7 @@ const Create = () => {
       if (response.ok) {
         // Handle successful submission
         alert("Coupon created successfully!");
+        //reset the form state
         setFormState({
           product: "",
           productInfo: "",
@@ -81,6 +84,7 @@ const Create = () => {
     }
   };
 
+  //fills in the current position in the form, doest not actually call the GeoLocationProvider, since current position is already available in the location state
   const handleCurrentPosition = () => {
     setFormState((prev) => ({
       ...prev,
@@ -115,7 +119,7 @@ const Create = () => {
         <div className="create-nav-buttons">
           <button
             className="create-styled-button"
-            onClick={() => navigate("/discoveries")}
+            onClick={() => navigate("/")}
           >
             DISCOVER
           </button>
