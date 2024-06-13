@@ -200,23 +200,23 @@ const Discoveries = () => {
             weiter erzählen!
           </p>
         </div>
+       <div className="nav-buttons">
+          <button className="styled-button" onClick={() => navigate("/create")}>
+            CREATE
+          </button>
+          <button
+            className="styled-button"
+            onClick={() => navigate("/messages")}
+          >
+            CHAT
+          </button>
+        </div>
         <div className="filters">
           <button className="filter-button" onClick={toggleDistanceDropdown}>
             Umkreis
           </button>
           <button className="filter-button" onClick={toggleCategoryDropdown}>
             Produktkategorie
-          </button>
-        </div>
-        {showDistanceDropdown && (
-          <DistanceDropdown distance={distance} onApply={applyDistanceFilter} />
-        )}
-        {showCategoryDropdown && (
-          <CategoryDropdown
-            selectedCategories={selectedCategories}
-            onApply={applyCategoryFilter}
-          />
-        )}
         <div className="nav-buttons">
           <button className="styled-button" onClick={() => navigate("/create")}>
             CREATE
