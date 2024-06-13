@@ -288,12 +288,12 @@
   }
 
   .create-left-column {
-    position: sticky;
+    position: static;
     top: 0;
     width: 100%;
     padding: 10px;
     height: auto;
-    background-color: rgb(252, 226, 218); /* Solid color for sticky part */
+    background-color: linear-gradient(to bottom, rgb(252, 226, 218) 95%, transparent);
     display: flex;
     flex-direction: column;
     align-items: center;
