@@ -219,11 +219,11 @@ button.filter-button,
   .header {
     padding-left: 10px;
     grid-template-columns: auto 50px;
-    justify-content: left;
+    justify-content: center;
   }
 
   .header-text {
-    text-align: left;
+    text-align: center;
   }
 
   .logo {
