@@ -289,11 +289,6 @@
     padding-left: 10px;
     padding-right: 10px; /* Add right padding for consistency */
     justify-content: left;
-    background: linear-gradient(
-      180deg,
-      rgb(252, 226, 218) 0%,
-      rgb(204, 252, 247) 100%
-    ); /* Gradient for form part */
   }
 
   .messages-header {
