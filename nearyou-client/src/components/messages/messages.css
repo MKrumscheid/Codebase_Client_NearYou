@@ -258,6 +258,7 @@
     bottom: 20px;
     left: 20px;
     right: 20px;
+    background: linear-gradient(0deg, rgb(204, 252, 247) 85%, transparent);
   }
 
   .chat-container {
