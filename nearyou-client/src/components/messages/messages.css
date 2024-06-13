@@ -146,7 +146,8 @@
   overflow: hidden;
   border-radius: 20px;
   margin-top: 20px;
-  position: sticky;
+  position: fixed;
+  bottom: 0px;
   left: 20px;
   right: 20px;
   background: linear-gradient(0deg, rgb(204, 252, 247) 85%, transparent);
@@ -258,6 +259,7 @@
     border-radius: 20px;
     margin-top: 20px;
     position: fixed;
+    bottom: 0px;
     left: 20px;
     right: 20px;
     background: linear-gradient(0deg, rgb(204, 252, 247) 85%, transparent);
@@ -349,6 +351,7 @@
     border-radius: 20px;
     margin-top: 10px;
     position: fixed;
+    bottom: 0px;
     left: 20px;
     right: 20px;
     background: linear-gradient(0deg, rgb(204, 252, 247) 85%, transparent);
