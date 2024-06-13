@@ -347,11 +347,6 @@
     padding-left: 0px;
     padding-right: 0px; /* Add right padding for consistency */
     justify-content: center;
-    background: linear-gradient(
-      180deg,
-      rgb(252, 226, 218) 0%,
-      rgb(204, 252, 247) 100%
-    ); /* Gradient for form part */
   }
 
   .create-form input[type="text"],
