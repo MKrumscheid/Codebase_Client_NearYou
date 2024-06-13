@@ -211,7 +211,7 @@ const Discoveries = () => {
             CHAT
           </button>
         </div>
-      </div>
+      
  <div className="filters">
           <button className="filter-button" onClick={toggleDistanceDropdown}>
             Umkreis
@@ -229,6 +229,7 @@ const Discoveries = () => {
             onApply={applyCategoryFilter}
           />
         )}
+    </div>
       <div className="content-wrapper">
         <Coupons
           coupons={filteredCoupons}
