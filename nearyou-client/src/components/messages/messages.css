@@ -8,6 +8,7 @@
     rgb(252, 226, 218) 0%,
     rgb(204, 252, 247) 100%
   );
+  background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -361,7 +362,7 @@
     padding: 15px;
     padding-top: 45px;
     height: auto;
-    background-color: rgb(252, 226, 218); /* Solid color for sticky part */
+    background: linear-gradient(to bottom, rgb(252, 226, 218) 95%, transparent);
     z-index: 10;
   }
 
@@ -372,11 +373,6 @@
     padding-left: 10px;
     padding-right: 10px; /* Add right padding for consistency */
     justify-content: center;
-    background: linear-gradient(
-      180deg,
-      rgb(252, 226, 218) 0%,
-      rgb(204, 252, 247) 100%
-    );
   }
 
   .messages-header {
