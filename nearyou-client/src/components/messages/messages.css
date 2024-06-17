@@ -39,7 +39,7 @@
 }
 
 .messages-left-column {
-  width: 35%;
+  width: 30%;
   padding: 20px;
   position: fixed;
   height: 100%;
@@ -48,7 +48,7 @@
 }
 
 .messages-header {
-  display: grid;
+  display: flex;
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 10px;
@@ -88,13 +88,13 @@
 
 .messages-nav-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
   margin-top: 20px;
 }
 
 .messages-styled-button {
-  padding: 10px 20px;
+  padding: 5px 20px;
   background-color: #e9aa95;
   color: white;
   border: none;
@@ -103,6 +103,8 @@
   text-align: center;
   width: 200px; /* Fixed width for all buttons */
   margin-left: 0;
+  font-weight: 900;
+  font-size: larger;
 }
 
 .messages-content-wrapper {
@@ -281,7 +283,7 @@
 
     padding-top: 45px;
     height: auto;
-    background: linear-gradient(to bottom, rgb(252, 226, 218) 95%, transparent); /* Solid color for sticky part */
+    background: linear-gradient(to bottom, rgb(252, 226, 218) 90%, transparent); /* Solid color for sticky part */
     z-index: 10;
   }
 
@@ -295,11 +297,11 @@
 
   .messages-header {
     grid-template-columns: auto 1fr;
-    justify-content: left; /* Center align header in smaller viewports */
+    justify-content: center; /* Center align header in smaller viewports */
   }
 
   .messages-header-text {
-    text-align: left; /* Center text in header */
+    text-align: center; /* Center text in header */
   }
 
   .messages-logo {
@@ -311,7 +313,7 @@
 
   .messages-nav-buttons {
     flex-direction: row;
-    justify-content: left; /* Align navigation buttons to the center */
+    justify-content: center; /* Align navigation buttons to the center */
     gap: 10px;
     width: calc(100% - 20px); /* Ensure navigation buttons take full width */
   }
