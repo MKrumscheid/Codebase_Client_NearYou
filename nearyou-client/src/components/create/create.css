@@ -104,13 +104,13 @@
 
 .create-nav-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
   margin-top: 20px;
 }
 
 .create-styled-button {
-  padding: 10px 20px;
+  padding: 5px 20px;
   background-color: #e9aa95;
   color: white;
   border: none;
@@ -119,6 +119,8 @@
   text-align: center;
   width: 200px; /* Fixed width for all buttons */
   margin-left: 0;
+  font-weight: 900;
+  font-size: larger;
 }
 
 .create-form-wrapper {
