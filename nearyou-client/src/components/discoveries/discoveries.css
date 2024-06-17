@@ -48,7 +48,6 @@ a {
 
 button,
 .styled-link {
-  max-width: 200px;
   margin: 0 auto;
 }
 
@@ -138,14 +137,14 @@ button.filter-button,
 
 .nav-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
   margin-top: 20px;
 }
 
 .styled-button,
 .styled-link {
-  padding: 10px 20px;
+  padding: 5px 20px;
   background-color: #e9aa95;
   color: white;
   border: none;
@@ -154,6 +153,8 @@ button.filter-button,
   text-align: center;
   width: 200px; /* Fixed width for all buttons */
   margin-left: 0;
+  font-weight: 900;
+  font-size: larger;
 }
 
 .nav-buttons .styled-button,
