@@ -53,7 +53,7 @@ button,
 
 button.filter-button,
 .styled-link {
-  max-width: 250px;
+  max-width: 200px;
   border-radius: 50px; /* Apply border-radius to filter buttons in all views */
 }
 
@@ -114,7 +114,7 @@ button.filter-button,
 
 .filters {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 10px;
   margin: 20px 0;
 }
@@ -140,6 +140,7 @@ button.filter-button,
   flex-direction: row;
   gap: 10px;
   margin-top: 20px;
+  justify-content: center;
 }
 
 .styled-button,
@@ -230,7 +231,7 @@ button.filter-button,
 
   .filters {
     flex-direction: row;
-    justify-content: flex-start; /* Align filters to the left */
+    justify-content: center;
     gap: 10px;
     width: calc(100% - 20px); /* Ensure filters take full width */
   }
@@ -242,7 +243,7 @@ button.filter-button,
 
   .nav-buttons {
     flex-direction: row;
-    justify-content: flex-start; /* Align navigation buttons to the left */
+    justify-content: center; /* Align navigation buttons to the left */
     gap: 10px;
     width: calc(100% - 20px); /* Ensure navigation buttons take full width */
   }
@@ -307,7 +308,7 @@ button.filter-button,
   }
 
   .header-text {
-    text-align: left;
+    text-align: center;
   }
 
   .logo {
@@ -319,9 +320,8 @@ button.filter-button,
 
   .filters {
     flex-direction: row;
-    justify-content: flex-start; /* Align filters to the left */
+    justify-content: center; /* Align filters to the left */
     gap: 10px;
-    width: calc(100% - 50px); /* Ensure filters take full width */
   }
 
   .filter-button {
@@ -331,7 +331,7 @@ button.filter-button,
 
   .nav-buttons {
     flex-direction: row;
-    justify-content: flex-start; /* Align navigation buttons to the left */
+    justify-content: center; /* Align navigation buttons to the left */
     gap: 10px;
     width: calc(100% - 20px); /* Ensure navigation buttons take full width */
   }
