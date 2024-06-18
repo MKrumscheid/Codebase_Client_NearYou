@@ -283,7 +283,7 @@
 
     padding-top: 45px;
     height: auto;
-    background: linear-gradient(to bottom, rgb(252, 226, 218) 90%, transparent); /* Solid color for sticky part */
+    background: linear-gradient(to bottom, rgb(252, 226, 218), rgb(244 231 224) 95%, transparent); /* Solid color for sticky part */
     z-index: 10;
   }
 
@@ -366,7 +366,7 @@
     padding: 15px;
     padding-top: 45px;
     height: auto;
-    background: linear-gradient(to bottom, rgb(252, 226, 218) 95%, transparent);
+    background: linear-gradient(to bottom, rgb(252, 226, 218), rgb(244 231 224) 95%, transparent);
     z-index: 10;
   }
 
