@@ -30,3 +30,9 @@
   width: 100%;
   text-align: center;
 }
+
+@media (max-width: 1220px) {
+  .dropdown {
+    margin-left: 15%
+  }
+}
