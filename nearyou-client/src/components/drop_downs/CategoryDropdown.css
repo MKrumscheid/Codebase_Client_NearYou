@@ -9,6 +9,7 @@
   position: absolute;
   max-width: 200px;
   width: 40%;
+  margin-left: 45%;
 }
 
 .category-dropdown label {
