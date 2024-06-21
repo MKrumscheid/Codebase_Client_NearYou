@@ -35,3 +35,16 @@
   width: 100%;
   text-align: center;
 }
+
+@media (max-width: 1220px) {
+  .dropdown {
+    left: 0;
+    margin-left: 51%;
+  }
+}
+
+@media (max-width: 870px) {
+  .dropdown {
+    margin-left: 220px;
+  }
+}
