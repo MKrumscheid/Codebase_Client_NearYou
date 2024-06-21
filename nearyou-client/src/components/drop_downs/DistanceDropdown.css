@@ -1,4 +1,4 @@
-.dropdown {
+.distamce-dropdown {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -11,16 +11,16 @@
   width: 40%;
 }
 
-.dropdown label {
+.distance-dropdown label {
   font-weight: bold;
 }
 
-.dropdown input[type="range"] {
+.distance-dropdown input[type="range"] {
   width: 100%;
   margin: 10px 0;
 }
 
-.dropdown button {
+.distance-dropdown button {
   background-color: #e9aa95;
   color: white;
   border: none;
@@ -32,7 +32,7 @@
 }
 
 @media (max-width: 1220px) {
-  .dropdown {
+  .distance-dropdown {
     right: 0;
     margin-right: 50%;
   }
