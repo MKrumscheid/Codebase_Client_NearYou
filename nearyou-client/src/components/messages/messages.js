@@ -11,14 +11,24 @@ const Messages = () => {
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null); // Reference to the end of messages
 
-  //a message is considered a form with content, latitude and longitude
+  // Function to remove messages older than 12 hours from local storage
+  const removeOldMessages = () => {
+    const messages = JSON.parse(localStorage.getItem("myMessages")) || [];
+    const currentTime = new Date().getTime();
+    const filteredMessages = messages.filter(
+      (message) => currentTime - message.createdAt < 12 * 60 * 60 * 1000
+    );
+    localStorage.setItem("myMessages", JSON.stringify(filteredMessages));
+  };
+
+  // A message is considered a form with content, latitude and longitude
   const [formState, setFormFate] = useState({
     content: "",
     longitude: location.longitude || "",
     latitude: location.latitude || "",
   });
 
-  //update the form state with the input values
+  // Update the form state with the input values
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormFate((prev) => ({
@@ -26,7 +36,8 @@ const Messages = () => {
       [name]: value,
     }));
   };
-  //adds a message that was send by the user to the local storage
+
+  // Adds a message that was sent by the user to the local storage
   const addMessageToLocalStorage = (message) => {
     const messages = JSON.parse(localStorage.getItem("myMessages")) || [];
     const updatedMessages = [
@@ -36,7 +47,7 @@ const Messages = () => {
     localStorage.setItem("myMessages", JSON.stringify(updatedMessages));
   };
 
-  //what to do when the send button is clicked
+  // What to do when the send button is clicked
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission
     const bodyContent = JSON.stringify({
@@ -44,7 +55,7 @@ const Messages = () => {
       latitude: location.latitude,
       longitude: location.longitude,
     });
-    //POST the message to the server
+    // POST the message to the server
     try {
       const response = await fetch("http://localhost:3000/api/messages", {
         method: "POST",
@@ -66,7 +77,7 @@ const Messages = () => {
           longitude: location.longitude || "",
           latitude: location.latitude || "",
         });
-        // // Scroll to the bottom after sending a message and everytime new messages are fetched
+        // Scroll to the bottom after sending a message and every time new messages are fetched
         scrollToBottom();
       } else {
         alert("Failed to send message.");
@@ -76,8 +87,10 @@ const Messages = () => {
       alert("Error submitting form.");
     }
   };
-  //fetches the messages from the server and updates the local storage
+
+  // Fetches the messages from the server and updates the local storage
   const fetchMessages = useCallback(async () => {
+    removeOldMessages(); // Remove old messages before fetching new ones
     const localMessages = JSON.parse(localStorage.getItem("myMessages")) || [];
     try {
       const response = await fetch(
@@ -126,7 +139,8 @@ const Messages = () => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-  //fetch the messages when the component is mounted and every 5 seconds. We have to call this every 5 seconds, otherwise the server would need to calculate to whom it should push the messages every time a new message is sent
+
+  // Fetch the messages when the component is mounted and every 5 seconds
   useEffect(() => {
     fetchMessages();
     const intervalId = setInterval(fetchMessages, 5000);
