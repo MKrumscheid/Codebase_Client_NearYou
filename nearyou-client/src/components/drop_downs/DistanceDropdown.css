@@ -3,11 +3,12 @@
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 250px;
   margin-top: 10px;
   font-family: "Montserrat", sans-serif;
-  font-size: 10px;
+  font-size: 14px;
   position: absolute;
+  max-width: 200px;
+  width: 40%;
 }
 
 .dropdown label {
