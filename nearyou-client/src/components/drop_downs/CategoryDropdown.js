@@ -26,7 +26,7 @@ const CategoryDropdown = ({ selectedCategories, onApply }) => {
   };
   // Return the dropdown component with checkboxes for each category
   return (
-    <div className="dropdown">
+    <div className="category-dropdown">
       <label>Produktkategorie:</label>
       {categories.map((category) => (
         <div key={category.value} className="checkbox-container">
