@@ -11,7 +11,7 @@ const DistanceDropdown = ({ distance, onApply }) => {
   };
   // Return the dropdown component with a range input for selecting the distance
   return (
-    <div className="dropdown">
+    <div className="distance-dropdown">
       <label>Umkreis:</label>
       <input
         type="range"
