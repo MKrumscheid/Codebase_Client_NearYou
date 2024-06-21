@@ -1,4 +1,4 @@
-.dropdown {
+.category-dropdown {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -11,7 +11,7 @@
   width: 40%;
 }
 
-.dropdown label {
+.category-dropdown label {
   font-weight: normal;
 }
 
@@ -25,7 +25,7 @@
   margin-right: 10px;
 }
 
-.dropdown button {
+.category-dropdown button {
   background-color: #e9aa95;
   color: white;
   border: none;
@@ -37,14 +37,14 @@
 }
 
 @media (max-width: 1220px) {
-  .dropdown {
+  .category-dropdown {
     left: 0;
     margin-left: 51%;
   }
 }
 
 @media (max-width: 870px) {
-  .dropdown {
+  .category-dropdown {
     margin-left: 220px;
   }
 }
