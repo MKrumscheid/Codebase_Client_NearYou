@@ -244,7 +244,7 @@ const Create = () => {
             type="number"
             name="validity"
             placeholder="Gültigkeit (in min, max 1440)"
-            min="1"
+            min="10"
             max="1440"
             value={formState.validity}
             onChange={handleInputChange}
