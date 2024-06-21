@@ -33,6 +33,13 @@
 
 @media (max-width: 1220px) {
   .dropdown {
-    margin-left: 15%
+    right: 0;
+    margin-right: 50%;
+  }
+}
+
+@media (max-width: 870px) {
+  .dropdown {
+    left: 0;
   }
 }
