@@ -1,4 +1,4 @@
-.distamce-dropdown {
+.distance-dropdown {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -39,7 +39,7 @@
 }
 
 @media (max-width: 870px) {
-  .dropdown {
+  .distance-dropdown {
     left: 15px;
     min-width: 190px;
   }
