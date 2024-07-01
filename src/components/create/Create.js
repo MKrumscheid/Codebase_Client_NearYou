@@ -51,10 +51,14 @@ const Create = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/api/coupons", {
-        method: "POST",
-        body: formData,
-      });
+      //const response = await fetch("http://localhost:3000/api/coupons", {
+      const response = await fetch(
+        "https://nearyou-server-28246f0c9e39.herokuapp.com/api/coupons",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
       if (response.ok) {
         // Handle successful submission
         alert("Coupon created successfully!");
