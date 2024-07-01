@@ -16,28 +16,46 @@ const Discoveries = () => {
   const location = useGeolocation(); //using the geolocation hook to get the location of the user
   const navigate = useNavigate(); //using the navigate hook to navigate between the different pages
 
+  // Function to get the presigned URL for a file from S3
+  const getPresignedUrl = async (key) => {
+    try {
+      const response = await fetch(
+        `https://nearyou-server-28246f0c9e39.herokuapp.com/api/coupons/file/${key}`
+      );
+      const data = await response.json();
+      return data.url;
+    } catch (error) {
+      console.error("Error fetching presigned URL:", error);
+      return null;
+    }
+  };
+
   //fetching the coupons from the backend via the API
   const fetchCoupons = useCallback(async () => {
     //using the useCallback hook to memoize the function and only call it when the dependencies change (dependencies are distance, location.latitude and location.longitude)
     try {
       const response = await fetch(
         //Using a GET request to fetch the coupons from the backend with distance, longitude and latitude as parameters
-        // `http://localhost:3000/api/coupons/nearby/?distance=${distance}&latitude=${location.latitude}&longitude=${location.longitude}`
         `https://nearyou-server-28246f0c9e39.herokuapp.com/api/coupons/nearby/?distance=${distance}&latitude=${location.latitude}&longitude=${location.longitude}`
       );
       const data = await response.json(); //data now contains all nearby coupons send from the server
 
-      //const baseURL = "http://localhost:3000/";
-      const baseURL = "https://nearyou-server-28246f0c9e39.herokuapp.com"; //currently on localhost, change to the actual URL when deploying
       //getting the stored coupons from the local storage or an empty array if there are none
       const storedCoupons = JSON.parse(localStorage.getItem("coupons")) || [];
       const currentTime = Date.now();
-      //mapping over all the coupons in data and adding the base URL to the company logo and product photo, since the db right now only sotres the relative path
-      const updatedCoupons = data.map((coupon) => ({
-        ...coupon,
-        companyLogo: `${baseURL}${coupon.companyLogo}`,
-        productPhoto: `${baseURL}${coupon.productPhoto}`,
-      }));
+
+      // Fetch presigned URLs for company logos and product photos
+      const updatedCoupons = await Promise.all(
+        data.map(async (coupon) => {
+          const companyLogoUrl = await getPresignedUrl(coupon.companyLogo);
+          const productPhotoUrl = await getPresignedUrl(coupon.productPhoto);
+          return {
+            ...coupon,
+            companyLogo: companyLogoUrl,
+            productPhoto: productPhotoUrl,
+          };
+        })
+      );
 
       //filtering out the valid claimed coupons and adding the remaining validity to them
       const validClaimedCoupons = storedCoupons
@@ -94,7 +112,6 @@ const Discoveries = () => {
   const claimCoupon = async (id) => {
     try {
       //using a PATCH request to claim the coupon with the specified id
-      //const response = await fetch(`http://localhost:3000/api/coupons/${id}`, {
       const response = await fetch(
         `https://nearyou-server-28246f0c9e39.herokuapp.com/api/coupons/${id}`,
         {

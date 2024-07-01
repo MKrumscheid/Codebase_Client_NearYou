@@ -22,6 +22,7 @@ const Create = () => {
     productPhotoPreview: null,
     companyLogoPreview: null,
   });
+
   //update the form state with the input values
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,6 +31,7 @@ const Create = () => {
       [name]: value,
     }));
   };
+
   //update the form state with the file values
   const handleFileChange = (e) => {
     const { name, files } = e.target;
@@ -51,7 +53,6 @@ const Create = () => {
     }
 
     try {
-      //const response = await fetch("http://localhost:3000/api/coupons", {
       const response = await fetch(
         "https://nearyou-server-28246f0c9e39.herokuapp.com/api/coupons/",
         {
