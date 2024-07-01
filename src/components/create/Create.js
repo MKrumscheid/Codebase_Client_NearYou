@@ -53,7 +53,7 @@ const Create = () => {
     try {
       //const response = await fetch("http://localhost:3000/api/coupons", {
       const response = await fetch(
-        "https://nearyou-server-28246f0c9e39.herokuapp.com/api/coupons",
+        "https://nearyou-server-28246f0c9e39.herokuapp.com/api/coupons/",
         {
           method: "POST",
           body: formData,
@@ -79,7 +79,6 @@ const Create = () => {
           companyLogoPreview: null,
         });
       } else {
-        // Handle error
         alert("Failed to create coupon.");
       }
     } catch (error) {
