@@ -57,13 +57,17 @@ const Messages = () => {
     });
     // POST the message to the server
     try {
-      const response = await fetch("http://localhost:3000/api/messages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: bodyContent,
-      });
+      //const response = await fetch("http://localhost:3000/api/messages", {
+      const response = await fetch(
+        "https://nearyou-server-28246f0c9e39.herokuapp.com/api/messages",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: bodyContent,
+        }
+      );
 
       if (response.ok) {
         const createdMessage = await response.json();
@@ -94,7 +98,8 @@ const Messages = () => {
     const localMessages = JSON.parse(localStorage.getItem("myMessages")) || [];
     try {
       const response = await fetch(
-        `http://localhost:3000/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
+        // `http://localhost:3000/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
+        `https://nearyou-server-28246f0c9e39.herokuapp.com/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
         {
           method: "GET",
           headers: {

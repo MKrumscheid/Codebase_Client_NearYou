@@ -22,11 +22,13 @@ const Discoveries = () => {
     try {
       const response = await fetch(
         //Using a GET request to fetch the coupons from the backend with distance, longitude and latitude as parameters
-        `http://localhost:3000/api/coupons/nearby/?distance=${distance}&latitude=${location.latitude}&longitude=${location.longitude}`
+        // `http://localhost:3000/api/coupons/nearby/?distance=${distance}&latitude=${location.latitude}&longitude=${location.longitude}`
+        `https://nearyou-server-28246f0c9e39.herokuapp.com/api/coupons/nearby/?distance=${distance}&latitude=${location.latitude}&longitude=${location.longitude}`
       );
       const data = await response.json(); //data now contains all nearby coupons send from the server
 
-      const baseURL = "http://localhost:3000/"; //currently on localhost, change to the actual URL when deploying
+      //const baseURL = "http://localhost:3000/";
+      const baseURL = "https://nearyou-server-28246f0c9e39.herokuapp.com"; //currently on localhost, change to the actual URL when deploying
       //getting the stored coupons from the local storage or an empty array if there are none
       const storedCoupons = JSON.parse(localStorage.getItem("coupons")) || [];
       const currentTime = Date.now();
@@ -92,13 +94,17 @@ const Discoveries = () => {
   const claimCoupon = async (id) => {
     try {
       //using a PATCH request to claim the coupon with the specified id
-      const response = await fetch(`http://localhost:3000/api/coupons/${id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ claimed: true }),
-      });
+      //const response = await fetch(`http://localhost:3000/api/coupons/${id}`, {
+      const response = await fetch(
+        `https://nearyou-server-28246f0c9e39.herokuapp.com/api/coupons/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ claimed: true }),
+        }
+      );
       const data = await response.json();
       const currentTime = Date.now();
       //mapping over the coupons (in the state) and updating the patched coupon with the specified id (the patched coupon is the one being claimed)
@@ -200,7 +206,7 @@ const Discoveries = () => {
             weiter erzählen!
           </p>
         </div>
-  <div className="nav-buttons">
+        <div className="nav-buttons">
           <button className="styled-button" onClick={() => navigate("/create")}>
             CREATE
           </button>
@@ -211,8 +217,8 @@ const Discoveries = () => {
             CHAT
           </button>
         </div>
-      
- <div className="filters">
+
+        <div className="filters">
           <button className="filter-button" onClick={toggleDistanceDropdown}>
             Umkreis
           </button>
@@ -229,7 +235,7 @@ const Discoveries = () => {
             onApply={applyCategoryFilter}
           />
         )}
-    </div>
+      </div>
       <div className="content-wrapper">
         <Coupons
           coupons={filteredCoupons}
