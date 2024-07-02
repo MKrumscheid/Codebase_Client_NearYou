@@ -101,9 +101,6 @@ const Messages = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "Cache-Control": "no-cache",
-            Pragma: "no-cache",
-            Expires: "0",
           },
         }
       );
@@ -133,9 +130,9 @@ const Messages = () => {
         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
       );
       // Update the local storage and state with the unique messages
+
       const updatedMessages = removeOldMessages(uniqueMessages);
       setMessages(updatedMessages);
-      localStorage.setItem("myMessages", JSON.stringify(updatedMessages));
       scrollToBottom(); // Scroll to the bottom after fetching messages
     } catch (error) {
       console.error("Error fetching messages:", error);
