@@ -16,7 +16,7 @@ const Messages = () => {
     const messages = JSON.parse(localStorage.getItem("myMessages")) || [];
     const currentTime = new Date().getTime();
     const filteredMessages = messages.filter(
-      (message) => currentTime - message.createdAt < 26 * 60 * 60 * 1000
+      (message) => currentTime - message.createdAt > 12 * 60 * 60 * 1000
     );
     localStorage.setItem("myMessages", JSON.stringify(filteredMessages));
   };
