@@ -42,7 +42,7 @@ const Messages = () => {
     const messages = JSON.parse(localStorage.getItem("myMessages")) || [];
     const updatedMessages = [
       ...messages,
-      { ...message, createdAt: new Date().getTime() },
+      { ...message, createdAt: new Date().getTime(), isMyMessage: true },
     ];
     localStorage.setItem("myMessages", JSON.stringify(updatedMessages));
   };
@@ -116,18 +116,27 @@ const Messages = () => {
       );
       const data = await response.json();
 
-      const allMessages = [...filteredMessages, ...data];
+      // Add isMyMessage attribute to server messages based on localMessages
+      const allMessages = data.map((message) => {
+        const localMessage = localMessages.find((m) => m.id === message.id);
+        return localMessage
+          ? { ...message, isMyMessage: localMessage.isMyMessage }
+          : message;
+      });
+
+      // Combine filtered local messages and server messages
+      const combinedMessages = [...filteredMessages, ...allMessages];
 
       // Remove duplicate messages and keep isMyMessage attribute
-      const uniqueMessages = allMessages.reduce((acc, current) => {
+      const uniqueMessages = combinedMessages.reduce((acc, current) => {
         const existingMessage = acc.find((item) => item.id === current.id);
         if (!existingMessage) {
           return acc.concat([current]);
         } else {
-          // Merge attributes, prioritizing local attributes
+          // Keep isMyMessage attribute from local message
           return acc.map((item) =>
             item.id === current.id
-              ? { ...current, isMyMessage: item.isMyMessage }
+              ? { ...current, isMyMessage: existingMessage.isMyMessage }
               : item
           );
         }
