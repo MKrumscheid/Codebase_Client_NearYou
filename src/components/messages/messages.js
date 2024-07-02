@@ -11,16 +11,6 @@ const Messages = () => {
   const [messages, setMessages] = useState([]);
   const messagesEndRef = useRef(null); // Reference to the end of messages
 
-  // Function to remove messages older than 12 hours from local storage
-  const removeOldMessages = () => {
-    const messages = JSON.parse(localStorage.getItem("myMessages")) || [];
-    const currentTime = new Date().getTime();
-    const filteredMessages = messages.filter(
-      (message) => currentTime - message.createdAt < 12 * 60 * 60 * 1000
-    );
-    localStorage.setItem("myMessages", JSON.stringify(filteredMessages));
-  };
-
   // A message is considered a form with content, latitude and longitude
   const [formState, setFormFate] = useState({
     content: "",
@@ -94,8 +84,11 @@ const Messages = () => {
 
   // Fetches the messages from the server and updates the local storage
   const fetchMessages = useCallback(async () => {
-    removeOldMessages(); // Remove old messages before fetching new ones
     const localMessages = JSON.parse(localStorage.getItem("myMessages")) || [];
+    const currentTime = new Date().getTime();
+    const filteredMessages = localMessages.filter(
+      (message) => currentTime - message.updatedAt < 12 * 60 * 60 * 1000
+    );
     try {
       const response = await fetch(
         // `http://localhost:3000/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
@@ -109,7 +102,7 @@ const Messages = () => {
       );
       const data = await response.json();
 
-      const allMessages = [...localMessages, ...data];
+      const allMessages = [...filteredMessages, ...data];
       // Remove duplicate messages, since the server might return messages that are already in the local storage
       const uniqueMessages = allMessages.reduce((acc, current) => {
         const x = acc.find((item) => item.id === current.id);
