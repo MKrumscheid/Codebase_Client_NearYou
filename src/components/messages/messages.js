@@ -12,13 +12,13 @@ const Messages = () => {
   const messagesEndRef = useRef(null); // Reference to the end of messages
 
   // Function to remove messages older than 12 hours from local storage
-  const removeOldMessages = () => {
-    const messages = JSON.parse(localStorage.getItem("myMessages")) || [];
+  const removeOldMessages = (messages) => {
     const currentTime = new Date().getTime();
     const filteredMessages = messages.filter(
-      (message) => currentTime - message.createdAt > 12 * 60 * 60 * 1000
+      (message) => currentTime - message.createdAt < 12 * 60 * 60 * 1000
     );
     localStorage.setItem("myMessages", JSON.stringify(filteredMessages));
+    return filteredMessages;
   };
 
   // A message is considered a form with content, latitude and longitude
@@ -57,7 +57,6 @@ const Messages = () => {
     });
     // POST the message to the server
     try {
-      //const response = await fetch("http://localhost:3000/api/messages", {
       const response = await fetch(
         "https://nearyou-server-28246f0c9e39.herokuapp.com/api/messages",
         {
@@ -94,11 +93,9 @@ const Messages = () => {
 
   // Fetches the messages from the server and updates the local storage
   const fetchMessages = useCallback(async () => {
-    removeOldMessages(); // Remove old messages before fetching new ones
     const localMessages = JSON.parse(localStorage.getItem("myMessages")) || [];
     try {
       const response = await fetch(
-        // `http://localhost:3000/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
         `https://nearyou-server-28246f0c9e39.herokuapp.com/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
         {
           method: "GET",
@@ -133,8 +130,8 @@ const Messages = () => {
         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
       );
       // Update the local storage and state with the unique messages
-      localStorage.setItem("myMessages", JSON.stringify(uniqueMessages));
-      setMessages(uniqueMessages);
+      const updatedMessages = removeOldMessages(uniqueMessages);
+      setMessages(updatedMessages);
       scrollToBottom(); // Scroll to the bottom after fetching messages
     } catch (error) {
       console.error("Error fetching messages:", error);
