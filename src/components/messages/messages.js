@@ -96,9 +96,16 @@ const Messages = () => {
   const fetchMessages = useCallback(async () => {
     removeOldMessages(); // Remove old messages before fetching new ones
     const localMessages = JSON.parse(localStorage.getItem("myMessages")) || [];
+    const currentTime = Date.now();
+    const twelveHoursInMillis = 12 * 60 * 60 * 1000;
+
+    // Filter out local messages older than 12 hours
+    const filteredMessages = localMessages.filter(
+      (message) => currentTime - message.createdAt < twelveHoursInMillis
+    );
+
     try {
       const response = await fetch(
-        // `http://localhost:3000/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
         `https://nearyou-server-28246f0c9e39.herokuapp.com/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
         {
           method: "GET",
@@ -109,16 +116,23 @@ const Messages = () => {
       );
       const data = await response.json();
 
-      const allMessages = [...localMessages, ...data];
-      // Remove duplicate messages, since the server might return messages that are already in the local storage
+      const allMessages = [...filteredMessages, ...data];
+
+      // Remove duplicate messages and keep isMyMessage attribute
       const uniqueMessages = allMessages.reduce((acc, current) => {
-        const x = acc.find((item) => item.id === current.id);
-        if (!x) {
+        const existingMessage = acc.find((item) => item.id === current.id);
+        if (!existingMessage) {
           return acc.concat([current]);
         } else {
-          return acc;
+          // Merge attributes, prioritizing local attributes
+          return acc.map((item) =>
+            item.id === current.id
+              ? { ...current, isMyMessage: item.isMyMessage }
+              : item
+          );
         }
       }, []);
+
       // Calculate the distance of each message from the user's location
       uniqueMessages.forEach((msg) => {
         msg.distance = calculateDistance(
@@ -128,10 +142,12 @@ const Messages = () => {
           msg.location.coordinates[0] // Longitude
         );
       });
+
       // Sort the messages by creation date to show them in the correct order
       uniqueMessages.sort(
         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
       );
+
       // Update the local storage and state with the unique messages
       localStorage.setItem("myMessages", JSON.stringify(uniqueMessages));
       setMessages(uniqueMessages);
