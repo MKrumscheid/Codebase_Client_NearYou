@@ -35,7 +35,6 @@ const Discoveries = () => {
     //using the useCallback hook to memoize the function and only call it when the dependencies change (dependencies are distance, location.latitude and location.longitude)
     try {
       const response = await fetch(
-        //Using a GET request to fetch the coupons from the backend with distance, longitude and latitude as parameters
         `https://nearyou-server-28246f0c9e39.herokuapp.com/api/coupons/nearby/?distance=${distance}&latitude=${location.latitude}&longitude=${location.longitude}`
       );
       const data = await response.json(); //data now contains all nearby coupons send from the server
@@ -44,18 +43,12 @@ const Discoveries = () => {
       const storedCoupons = JSON.parse(localStorage.getItem("coupons")) || [];
       const currentTime = Date.now();
 
-      // Fetch presigned URLs for company logos and product photos
-      const updatedCoupons = await Promise.all(
-        data.map(async (coupon) => {
-          const companyLogoUrl = await getPresignedUrl(coupon.companyLogo);
-          const productPhotoUrl = await getPresignedUrl(coupon.productPhoto);
-          return {
-            ...coupon,
-            companyLogo: companyLogoUrl,
-            productPhoto: productPhotoUrl,
-          };
-        })
-      );
+      // Filter presigned URLs for company logos and product photos
+      const updatedCoupons = data.map((coupon) => ({
+        ...coupon,
+        companyLogo: coupon.companyLogoUrl,
+        productPhoto: coupon.productPhotoUrl,
+      }));
 
       //filtering out the valid claimed coupons and adding the remaining validity to them
       const validClaimedCoupons = storedCoupons
