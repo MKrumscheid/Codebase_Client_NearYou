@@ -130,7 +130,6 @@ const Messages = () => {
         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
       );
       // Update the local storage and state with the unique messages
-
       const updatedMessages = removeOldMessages(uniqueMessages);
       setMessages(updatedMessages);
       scrollToBottom(); // Scroll to the bottom after fetching messages
