@@ -57,7 +57,6 @@ const Messages = () => {
     });
     // POST the message to the server
     try {
-      //const response = await fetch("http://localhost:3000/api/messages", {
       const response = await fetch(
         "https://nearyou-server-28246f0c9e39.herokuapp.com/api/messages",
         {
@@ -98,7 +97,6 @@ const Messages = () => {
     const localMessages = JSON.parse(localStorage.getItem("myMessages")) || [];
     try {
       const response = await fetch(
-        // `http://localhost:3000/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
         `https://nearyou-server-28246f0c9e39.herokuapp.com/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
         {
           method: "GET",
