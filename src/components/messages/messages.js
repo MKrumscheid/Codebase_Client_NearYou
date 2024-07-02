@@ -22,7 +22,7 @@ const Messages = () => {
   };
 
   // A message is considered a form with content, latitude and longitude
-  const [formState, setFormFate] = useState({
+  const [formState, setFormState] = useState({
     content: "",
     longitude: location.longitude || "",
     latitude: location.latitude || "",
@@ -31,7 +31,7 @@ const Messages = () => {
   // Update the form state with the input values
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormFate((prev) => ({
+    setFormState((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -55,6 +55,8 @@ const Messages = () => {
       latitude: location.latitude,
       longitude: location.longitude,
     });
+    console.log("Sending message:", bodyContent); // Log the message content
+
     // POST the message to the server
     try {
       const response = await fetch(
@@ -70,12 +72,13 @@ const Messages = () => {
 
       if (response.ok) {
         const createdMessage = await response.json();
+        console.log("Message sent successfully:", createdMessage); // Log the response from the server
         // Add the message to the local storage
         addMessageToLocalStorage({ ...createdMessage, isMyMessage: true });
         // Fetch the messages again to update the list
         fetchMessages();
         // Reset the form state
-        setFormFate({
+        setFormState({
           content: "",
           longitude: location.longitude || "",
           latitude: location.latitude || "",
@@ -94,6 +97,7 @@ const Messages = () => {
   // Fetches the messages from the server and updates the local storage
   const fetchMessages = useCallback(async () => {
     const localMessages = JSON.parse(localStorage.getItem("myMessages")) || [];
+    console.log("Fetching messages...");
     try {
       const response = await fetch(
         `https://nearyou-server-28246f0c9e39.herokuapp.com/api/messages/nearby?latitude=${location.latitude}&longitude=${location.longitude}`,
@@ -104,7 +108,14 @@ const Messages = () => {
           },
         }
       );
+
+      if (!response.ok) {
+        console.error("Failed to fetch messages:", response.statusText);
+        return;
+      }
+
       const data = await response.json();
+      console.log("Fetched messages:", data); // Log the fetched messages
 
       const allMessages = [...localMessages, ...data];
       // Remove duplicate messages, since the server might return messages that are already in the local storage
@@ -132,6 +143,7 @@ const Messages = () => {
       // Update the local storage and state with the unique messages
       const updatedMessages = removeOldMessages(uniqueMessages);
       setMessages(updatedMessages);
+      localStorage.setItem("myMessages", JSON.stringify(updatedMessages));
       scrollToBottom(); // Scroll to the bottom after fetching messages
     } catch (error) {
       console.error("Error fetching messages:", error);
