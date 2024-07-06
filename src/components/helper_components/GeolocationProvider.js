@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 
 // Create a context to store the geolocation data
 const GeolocationContext = createContext();
+
 // Creating a custom hook to use the geolocation data
 export const useGeolocation = () => useContext(GeolocationContext);
 
@@ -9,30 +10,44 @@ export const useGeolocation = () => useContext(GeolocationContext);
 const GeolocationProvider = ({ children }) => {
   // State to store the geolocation data
   const [location, setLocation] = useState({ latitude: null, longitude: null });
-  // Function to fetch the geolocation data
-  const getLocation = () => {
+
+  useEffect(() => {
+    let watchId;
+
+    // Function to update the geolocation data
+    const updateLocation = (position) => {
+      console.log("Updated location:", position.coords); // for debugging
+      setLocation({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
+    };
+
+    const handleError = (error) => {
+      console.error("Error fetching location:", error);
+    };
+
     if (navigator.geolocation) {
-      // Check if geolocation is supported by the browser
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          console.log("Got location:", position.coords); // for debugging
-          setLocation({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          });
-        },
-        (error) => {
-          console.error("Error fetching location:", error);
+      // Start watching the geolocation
+      watchId = navigator.geolocation.watchPosition(
+        updateLocation,
+        handleError,
+        {
+          enableHighAccuracy: true, // Optional: for more accurate results
+          timeout: 10000, // Optional: set maximum time allowed to return a result
+          maximumAge: 0, // Optional: set to 0 to ensure fresh results
         }
       );
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
-  };
 
-  // Fetch the geolocation data when the component mounts
-  useEffect(() => {
-    getLocation();
+    // Clean up the watch when the component is unmounted
+    return () => {
+      if (watchId) {
+        navigator.geolocation.clearWatch(watchId);
+      }
+    };
   }, []);
 
   // Provide the geolocation data to the children components
